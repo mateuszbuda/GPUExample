@@ -68,8 +68,15 @@ class ViewController: UIViewController {
         
         // compute and wait for result
         computeCommandEncoder.endEncoding()
+        
+        let start = CACurrentMediaTime()
+        
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
+        
+        let stop = CACurrentMediaTime()
+        println("exec time: \((stop-start) * 1000) milis")
+        
         if (commandBuffer.error != nil) {
             println("Command buffer error: \(commandBuffer.error?.debugDescription)")
         }
