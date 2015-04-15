@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         result = [Int32](count:RESULT_SIZE, repeatedValue: 0)
         
         // set up a compute pipeline with sumKernel function and add it to encoder
-        let reduceKernel = defaultLibrary.newFunctionWithName("reduce")
+        let reduceKernel = defaultLibrary.newFunctionWithName("reduce4")
         var pipelineErrors: NSError?
         var computePipelineState = device.newComputePipelineStateWithFunction(reduceKernel!, error: &pipelineErrors)
         if computePipelineState == nil {
