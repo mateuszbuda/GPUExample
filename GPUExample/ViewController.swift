@@ -12,20 +12,20 @@ import QuartzCore
 import Darwin
 import Accelerate
 
-let PROBLEM_SIZE = 100000000 // 10^8
+let PROBLEM_SIZE = 63999999 // 256 MB - 4 B
 let WARP_SIZE = 512
 
 class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
-    var array: [Int32]!
-    var result: [Int32]!
+    var array: [Int32] = [Int32](count: PROBLEM_SIZE, repeatedValue: 1)
+    var result: [Int32] = [Int32](count:1, repeatedValue: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        array = [Int32](count: PROBLEM_SIZE, repeatedValue: 1)
-        result = [Int32](count:1, repeatedValue: 0)
+//        array = [Int32](count: PROBLEM_SIZE, repeatedValue: 1)
+//        result = [Int32](count:1, repeatedValue: 0)
     }
 
     @IBAction func runGPU(sender: UIButton) {
@@ -44,25 +44,26 @@ class ViewController: UIViewController {
         
         // calculate byte length of input and output data
         var arrayByteLength = array.count * sizeofValue(array[0])
-        var resultByteLength = sizeofValue(self.result[0])
+        var resultByteLength = result.count * sizeofValue(result[0])
         
-        // create a MTLBuffer - input data for GPU
+        // create a MTLBuffer - input data for GPU (<= 256 MB)
         var inputBuffer = device.newBufferWithBytes(&array, length: arrayByteLength, options: nil)
         
         // set the input vector for the reduce function,
-        // atIndex: 0 here corresponds to buffer(0) in the sudokuSolver function
+        // atIndex: 0 here corresponds to buffer(0) in the reduce function
         computeCommandEncoder.setBuffer(inputBuffer, offset: 0, atIndex: 0)
         
         // create the output buffer for the reduce function,
         // atIndex: 1 here corresponds to buffer(1) in the reduce function
-        var result = [Int32](count:1, repeatedValue: 0)
-        var resultBuffer = device.newBufferWithBytes(&result, length: resultByteLength, options: nil)
+        var resultBuffer = device.newBufferWithBytes(&(result), length: resultByteLength, options: nil)
         computeCommandEncoder.setBuffer(resultBuffer, offset: 0, atIndex: 1)
         
         // make grid
         var threadsPerGroup = MTLSize(width: WARP_SIZE, height: 1, depth: 1)
         var numThreadgroups = MTLSize(width: (PROBLEM_SIZE / (WARP_SIZE * 2)) + 1, height: 1, depth:1)
+        
         println("Block: \(threadsPerGroup.width) x \(threadsPerGroup.height)\nGrid: \(numThreadgroups.width) x \(numThreadgroups.height) x \(numThreadgroups.depth)")
+        
         computeCommandEncoder.dispatchThreadgroups(numThreadgroups, threadsPerThreadgroup: threadsPerGroup)
         
         // compute and wait for result
@@ -74,13 +75,12 @@ class ViewController: UIViewController {
         }
         
         // Get GPU data
-        var data = NSData(bytesNoCopy: resultBuffer.contents(),
-            length: resultByteLength, freeWhenDone: false)
+        var data = NSData(bytesNoCopy: resultBuffer.contents(), length: resultByteLength, freeWhenDone: false)
         
         // get data from GPU into Swift array
         data.getBytes(&result, length: resultByteLength)
         
-        resultLabel.text = String(result[0])
+        resultLabel.text = "\(result[0])"
     }
     
     // MARK: - Metal
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
         // Queue to handle an ordered list of command buffers
         var commandQueue = device.newCommandQueue()
         
-        // Access to Metal functions that are stored in Kernel.metal file, e.g. sukoduSolver()
+        // Access to Metal functions that are stored in Kernel.metal file, e.g. reduce()
         var defaultLibrary = device.newDefaultLibrary()
         
         // Buffer for storing encoded commands that are sent to GPU
