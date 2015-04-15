@@ -9,7 +9,7 @@
 #include <metal_stdlib>
 using namespace metal;
 
-constant int WARP_SIZE = 512;
+constant int THREADGROUP_SIZE = 512;
 
 kernel void reduce(const device int *array [[ buffer(0) ]],
                    volatile device atomic_int *result [[ buffer(1) ]],
@@ -17,7 +17,8 @@ kernel void reduce(const device int *array [[ buffer(0) ]],
                    uint tid [[ thread_index_in_threadgroup ]],
                    uint bid [[ threadgroup_position_in_grid ]],
                    uint blockDim [[ threads_per_threadgroup ]]) {
-    threadgroup int shared_memory[WARP_SIZE];
+    
+    threadgroup int shared_memory[THREADGROUP_SIZE];
     
     uint i = bid * (blockDim * 2) + tid;
     
