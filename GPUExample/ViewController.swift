@@ -29,6 +29,8 @@ class ViewController: UIViewController {
     @IBAction func runGPU(sender: UIButton) {
         var (device, commandQueue, defaultLibrary, commandBuffer, computeCommandEncoder) = initMetal()
         
+        result = [Int32](count:RESULT_SIZE, repeatedValue: 0)
+        
         // set up a compute pipeline with sumKernel function and add it to encoder
         let reduceKernel = defaultLibrary.newFunctionWithName("reduce")
         var pipelineErrors: NSError?
@@ -73,7 +75,7 @@ class ViewController: UIViewController {
         commandBuffer.waitUntilCompleted()
         
         let stop = CACurrentMediaTime()
-        println("exec time: \((stop-start) * 1000) milis")
+        println("GPU exec time: \((stop-start) * 1000) milis")
         
         if (commandBuffer.error != nil) {
             println("Command buffer error: \(commandBuffer.error?.debugDescription)")
@@ -107,6 +109,21 @@ class ViewController: UIViewController {
         var computeCommandEncoder = commandBuffer.computeCommandEncoder()
         
         return (device, commandQueue, defaultLibrary!, commandBuffer, computeCommandEncoder)
+    }
+    
+    @IBAction func runCPU(sender: AnyObject) {
+        result = [Int32](count:RESULT_SIZE, repeatedValue: 0)
+        
+        let start = CACurrentMediaTime()
+        
+        for i in input {
+            result[0] += i
+        }
+        
+        let stop = CACurrentMediaTime()
+        println("CPU exec time: \((stop-start) * 1000) milis")
+        
+        resultLabel.text = "\(result[0])"
     }
 }
 
