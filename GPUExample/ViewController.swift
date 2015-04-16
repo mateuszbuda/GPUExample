@@ -12,7 +12,7 @@ import QuartzCore
 import Darwin
 import Accelerate
 
-let PROBLEM_SIZE = 63999999 // 256 MB - 4 B
+let PROBLEM_SIZE = 63750000 // 255 MB
 let RESULT_SIZE = 1
 let THREADGROUP_SIZE = 512
 
@@ -87,6 +87,7 @@ class ViewController: UIViewController {
         // get data from GPU into Swift array
         data.getBytes(&result, length: resultByteLength)
         
+        println("result = \(result[0])")
         resultLabel.text = "\(result[0])"
     }
     
@@ -123,6 +124,7 @@ class ViewController: UIViewController {
         let stop = CACurrentMediaTime()
         println("CPU exec time: \((stop-start) * 1000) milis")
         
+        println("result = \(result[0])")
         resultLabel.text = "\(result[0])"
     }
 }

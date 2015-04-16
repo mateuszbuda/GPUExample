@@ -11,6 +11,9 @@ using namespace metal;
 
 constant int THREADGROUP_SIZE = 512;
 
+/* naive reduction */
+
+// (kernel | vertex | fragment)
 kernel void reduce1(const device int *array [[ buffer(0) ]],
                    volatile device atomic_int *result [[ buffer(1) ]],
                    uint id [[ thread_position_in_grid ]],
@@ -38,6 +41,8 @@ kernel void reduce1(const device int *array [[ buffer(0) ]],
         atomic_fetch_add_explicit(result, shared_memory[0], memory_order_relaxed);
     }
 }
+
+/* changed thred id performing reduction */
 
 kernel void reduce2(const device int *array [[ buffer(0) ]],
                     volatile device atomic_int *result [[ buffer(1) ]],
@@ -69,6 +74,8 @@ kernel void reduce2(const device int *array [[ buffer(0) ]],
     }
 }
 
+/* connected memory space */
+
 kernel void reduce3(const device int *array [[ buffer(0) ]],
                     volatile device atomic_int *result [[ buffer(1) ]],
                     uint id [[ thread_position_in_grid ]],
@@ -96,6 +103,8 @@ kernel void reduce3(const device int *array [[ buffer(0) ]],
         atomic_fetch_add_explicit(result, shared_memory[0], memory_order_relaxed);
     }
 }
+
+/* halved number of blocks */
 
 kernel void reduce4(const device int *array [[ buffer(0) ]],
                    volatile device atomic_int *result [[ buffer(1) ]],
