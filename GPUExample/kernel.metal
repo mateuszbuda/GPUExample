@@ -9,7 +9,21 @@
 #include <metal_stdlib>
 using namespace metal;
 
-constant int THREADGROUP_SIZE = 512;
+constant int THREADGROUP_SIZE = 256;
+
+/* map */
+
+kernel void map(const device int *array [[ buffer(0) ]],
+                device int *result [[ buffer(1) ]],
+                uint id [[ thread_position_in_grid ]],
+                uint tid [[ thread_index_in_threadgroup ]],
+                uint bid [[ threadgroup_position_in_grid ]],
+                uint blockDim [[ threads_per_threadgroup ]]) {
+    
+    uint i = bid * blockDim + tid;
+    
+    result[i] = int(cos(float(array[i])));
+}
 
 /* naive reduction */
 
@@ -25,7 +39,7 @@ kernel void reduce1(const device int *array [[ buffer(0) ]],
     
     uint i = bid * blockDim + tid;
     
-    shared_memory[tid] = array[i];
+    shared_memory[tid] = int(cos(float(array[i])));
     
     threadgroup_barrier(mem_flags::mem_none);
     
@@ -55,7 +69,7 @@ kernel void reduce2(const device int *array [[ buffer(0) ]],
     
     uint i = bid * blockDim + tid;
     
-    shared_memory[tid] = array[i];
+    shared_memory[tid] = int(cos(float(array[i])));
     
     threadgroup_barrier(mem_flags::mem_none);
     
@@ -87,7 +101,7 @@ kernel void reduce3(const device int *array [[ buffer(0) ]],
     
     uint i = bid * blockDim + tid;
     
-    shared_memory[tid] = array[i];
+    shared_memory[tid] = int(cos(float(array[i])));
     
     threadgroup_barrier(mem_flags::mem_none);
     
@@ -117,7 +131,7 @@ kernel void reduce4(const device int *array [[ buffer(0) ]],
     
     uint i = bid * (blockDim * 2) + tid;
     
-    shared_memory[tid] = array[i] + array[i + blockDim];
+    shared_memory[tid] = int(cos(float(array[i]))) + int(cos(float(array[i + blockDim])));
     
     threadgroup_barrier(mem_flags::mem_none);
     

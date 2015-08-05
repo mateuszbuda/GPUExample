@@ -14,6 +14,7 @@
 		616340471ADAFFFC00B00C25 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616340451ADAFFFC00B00C25 /* LaunchScreen.xib */; };
 		616340531ADAFFFD00B00C25 /* GPUExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616340521ADAFFFD00B00C25 /* GPUExampleTests.swift */; };
 		6163405D1ADB163500B00C25 /* kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6163405C1ADB163500B00C25 /* kernel.metal */; };
+		61C75A2D1B71F4DF0082735A /* KernelSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C75A2C1B71F4DF0082735A /* KernelSelectionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		616340511ADAFFFD00B00C25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		616340521ADAFFFD00B00C25 /* GPUExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUExampleTests.swift; sourceTree = "<group>"; };
 		6163405C1ADB163500B00C25 /* kernel.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = kernel.metal; sourceTree = "<group>"; };
+		61C75A2C1B71F4DF0082735A /* KernelSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KernelSelectionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				6163403C1ADAFFFC00B00C25 /* AppDelegate.swift */,
+				61C75A2C1B71F4DF0082735A /* KernelSelectionController.swift */,
 				6163403E1ADAFFFC00B00C25 /* ViewController.swift */,
 				6163405C1ADB163500B00C25 /* kernel.metal */,
 				616340401ADAFFFC00B00C25 /* Main.storyboard */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6163403F1ADAFFFC00B00C25 /* ViewController.swift in Sources */,
+				61C75A2D1B71F4DF0082735A /* KernelSelectionController.swift in Sources */,
 				6163405D1ADB163500B00C25 /* kernel.metal in Sources */,
 				6163403D1ADAFFFC00B00C25 /* AppDelegate.swift in Sources */,
 			);
