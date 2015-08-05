@@ -147,3 +147,7 @@ kernel void reduce4(const device int *array [[ buffer(0) ]],
         atomic_fetch_add_explicit(result, shared_memory[0], memory_order_relaxed);
     }
 }
+
+// source for parallel reduction:
+// Optimizing Parallel Reduction in CUDA by Mark Harris
+// https://docs.nvidia.com/cuda/samples/6_Advanced/reduction/doc/reduction.pdf

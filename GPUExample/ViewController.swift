@@ -131,6 +131,9 @@ class ViewController: UIViewController {
     
     // MARK: - Metal
     
+    // source: 
+    // DATA-PARALLEL PROGRAMMING WITH METAL AND SWIFT FOR IPHONE/IPAD GPU by Amund Tveit
+    // http://memkite.com/blog/2014/12/15/data-parallel-programming-with-metal-and-swift-for-iphoneipad-gpu/
     func initMetal() -> (MTLDevice, MTLCommandQueue, MTLLibrary, MTLCommandBuffer, MTLComputeCommandEncoder) {
         // Get access to iPhone or iPad GPU
         var device = MTLCreateSystemDefaultDevice()
