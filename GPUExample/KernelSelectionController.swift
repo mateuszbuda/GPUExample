@@ -10,8 +10,6 @@ import UIKit
 
 class KernelSelectionController: UITableViewController {
     
-    let reusableIdentifier = "cell"
-    
     var selectedKernel: String!
     
     // MARK: - Delegate

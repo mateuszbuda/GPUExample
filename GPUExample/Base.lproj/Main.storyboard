@@ -20,13 +20,13 @@
                         <sections>
                             <tableViewSection headerTitle="" id="Jh8-2y-p7i">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="eVK-zp-njG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eVK-zp-njG">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eVK-zp-njG" id="e5V-Hb-6dV">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYD-qh-CJp">
-                                                    <rect key="frame" x="24" y="8" width="560" height="31"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYD-qh-CJp">
+                                                    <rect key="frame" x="20" y="8" width="560" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="HMT-69-B6P"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ujO-va-Yxy">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ujO-va-Yxy">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ujO-va-Yxy" id="AhK-LO-oCJ">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -66,7 +66,7 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="7Ea-ba-76g"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="FLZ-U6-my5">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FLZ-U6-my5">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FLZ-U6-my5" id="S8q-eV-Iha">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -89,7 +89,7 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="kcU-4b-dt4"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="fvm-Ue-O7P">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fvm-Ue-O7P">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fvm-Ue-O7P" id="IbC-lL-49P">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -112,7 +112,7 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="I6w-MU-8HH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="poJ-BE-ca1">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="poJ-BE-ca1">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="poJ-BE-ca1" id="KCQ-aL-eIt">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -162,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjH-UQ-9P3">
-                                <rect key="frame" x="16" y="72" width="196" height="36"/>
+                                <rect key="frame" x="16" y="72" width="275" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="1OQ-LX-769"/>
                                     <constraint firstAttribute="width" constant="196" id="dlo-Nb-hwh"/>
@@ -172,12 +172,19 @@
                                 <state key="normal" title="Run GPU">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1OQ-LX-769"/>
+                                        <exclude reference="dlo-Nb-hwh"/>
+                                        <exclude reference="efa-Qq-1HC"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="runGPU:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QtR-Sr-IyJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time GPU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svN-9S-qhH">
-                                <rect key="frame" x="16" y="116" width="196" height="24"/>
+                                <rect key="frame" x="16" y="116" width="275" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="ZLz-da-XbZ"/>
                                 </constraints>
@@ -186,7 +193,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmC-lW-Bjm">
-                                <rect key="frame" x="388" y="72" width="196" height="36"/>
+                                <rect key="frame" x="309" y="72" width="275" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="8uH-jZ-MLA"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="Hhw-d7-dSu"/>
@@ -196,12 +203,19 @@
                                 <state key="normal" title="Run CPU">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8uH-jZ-MLA"/>
+                                        <exclude reference="Hhw-d7-dSu"/>
+                                        <exclude reference="b3g-Ng-dDf"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="runCPU:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Igp-B5-2JE"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time CPU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyn-vl-zDt">
-                                <rect key="frame" x="388" y="116" width="196" height="24"/>
+                                <rect key="frame" x="309" y="116" width="275" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="y08-xV-8vK"/>
                                 </constraints>
@@ -212,11 +226,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QmC-lW-Bjm" firstAttribute="leading" secondItem="DjH-UQ-9P3" secondAttribute="trailing" constant="18" id="1XJ-24-ekc"/>
                             <constraint firstItem="DjH-UQ-9P3" firstAttribute="trailing" secondItem="svN-9S-qhH" secondAttribute="trailing" id="78Z-dn-kFQ"/>
                             <constraint firstItem="oyn-vl-zDt" firstAttribute="trailing" secondItem="QmC-lW-Bjm" secondAttribute="trailing" id="8z7-AA-bcK"/>
                             <constraint firstItem="DjH-UQ-9P3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="GcR-SU-f80"/>
                             <constraint firstItem="oyn-vl-zDt" firstAttribute="top" secondItem="QmC-lW-Bjm" secondAttribute="bottom" constant="8" id="I8x-Hh-yvC"/>
                             <constraint firstItem="oyn-vl-zDt" firstAttribute="leading" secondItem="QmC-lW-Bjm" secondAttribute="leading" id="LNG-my-WLe"/>
+                            <constraint firstItem="DjH-UQ-9P3" firstAttribute="width" secondItem="QmC-lW-Bjm" secondAttribute="width" id="OxT-Dv-MkY"/>
                             <constraint firstItem="DjH-UQ-9P3" firstAttribute="leading" secondItem="svN-9S-qhH" secondAttribute="leading" id="P1V-bt-Y2H"/>
                             <constraint firstItem="QmC-lW-Bjm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="kmt-Ny-NPK"/>
                             <constraint firstAttribute="trailing" secondItem="QmC-lW-Bjm" secondAttribute="trailing" constant="16" id="lUv-T8-sOQ"/>
