@@ -51,6 +51,7 @@ kernel void reduce1(const device int *array [[ buffer(0) ]],
         threadgroup_barrier(mem_flags::mem_none);
     }
     
+    // it's not recommended (just to show atomic operation capability)!
     if (0 == tid) {
         atomic_fetch_add_explicit(result, shared_memory[0], memory_order_relaxed);
     }
@@ -83,6 +84,7 @@ kernel void reduce2(const device int *array [[ buffer(0) ]],
         threadgroup_barrier(mem_flags::mem_none);
     }
     
+    // it's not recommended (just to show atomic operation capability)!
     if (0 == tid) {
         atomic_fetch_add_explicit(result, shared_memory[0], memory_order_relaxed);
     }
@@ -113,6 +115,7 @@ kernel void reduce3(const device int *array [[ buffer(0) ]],
         threadgroup_barrier(mem_flags::mem_none);
     }
     
+    // it's not recommended (just to show atomic operation capability)!
     if (0 == tid) {
         atomic_fetch_add_explicit(result, shared_memory[0], memory_order_relaxed);
     }
@@ -143,6 +146,7 @@ kernel void reduce4(const device int *array [[ buffer(0) ]],
         threadgroup_barrier(mem_flags::mem_none);
     }
     
+    // it's not recommended (just to show atomic operation capability)!
     if (0 == tid) {
         atomic_fetch_add_explicit(result, shared_memory[0], memory_order_relaxed);
     }
