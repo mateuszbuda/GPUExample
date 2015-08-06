@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         var (device, commandQueue, defaultLibrary, commandBuffer, computeCommandEncoder) = initMetal()
         
         let resultSize = kernelName == "map" ? PROBLEM_SIZE : RESULT_SIZE
+        input = [Int32](count: PROBLEM_SIZE, repeatedValue: (kernelName == "map" ? 0 : 1))
         result = [Int32](count: resultSize, repeatedValue: 0)
         
         // set up a compute pipeline with kernel function and add it to encoder
@@ -104,6 +105,7 @@ class ViewController: UIViewController {
     
     @IBAction func runCPU(sender: AnyObject) {
         let resultSize = kernelName == "map" ? PROBLEM_SIZE : RESULT_SIZE
+        input = [Int32](count: PROBLEM_SIZE, repeatedValue: (kernelName == "map" ? 0 : 1))
         result = [Int32](count: resultSize, repeatedValue: 0)
         
         let start = CACurrentMediaTime()
@@ -116,8 +118,8 @@ class ViewController: UIViewController {
             
         } else { // reduce
             
-            for i in input {
-                result[0] += Int32(cos(CDouble(i)))
+            for i in 0 ..< input.count {
+                result[0] += input[i]
             }
             
         }

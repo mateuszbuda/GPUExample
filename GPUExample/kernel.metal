@@ -39,7 +39,7 @@ kernel void reduce1(const device int *array [[ buffer(0) ]],
     
     uint i = bid * blockDim + tid;
     
-    shared_memory[tid] = int(cos(float(array[i])));
+    shared_memory[tid] = array[i];
     
     threadgroup_barrier(mem_flags::mem_none);
     
@@ -70,7 +70,7 @@ kernel void reduce2(const device int *array [[ buffer(0) ]],
     
     uint i = bid * blockDim + tid;
     
-    shared_memory[tid] = int(cos(float(array[i])));
+    shared_memory[tid] = array[i];
     
     threadgroup_barrier(mem_flags::mem_none);
     
@@ -103,7 +103,7 @@ kernel void reduce3(const device int *array [[ buffer(0) ]],
     
     uint i = bid * blockDim + tid;
     
-    shared_memory[tid] = int(cos(float(array[i])));
+    shared_memory[tid] = array[i];
     
     threadgroup_barrier(mem_flags::mem_none);
     
@@ -134,7 +134,7 @@ kernel void reduce4(const device int *array [[ buffer(0) ]],
     
     uint i = bid * (blockDim * 2) + tid;
     
-    shared_memory[tid] = int(cos(float(array[i]))) + int(cos(float(array[i + blockDim])));
+    shared_memory[tid] = array[i] + array[i + blockDim];
     
     threadgroup_barrier(mem_flags::mem_none);
     
