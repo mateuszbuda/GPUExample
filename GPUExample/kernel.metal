@@ -38,7 +38,6 @@ kernel void reduce1(const device int *array [[ buffer(0) ]],
     threadgroup int shared_memory[THREADGROUP_SIZE];
     
     uint i = bid * blockDim + tid;
-    
     shared_memory[tid] = array[i];
     
     threadgroup_barrier(mem_flags::mem_none);

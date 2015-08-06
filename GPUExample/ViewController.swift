@@ -12,7 +12,7 @@ import QuartzCore
 import Darwin
 import Accelerate
 
-let PROBLEM_SIZE = 33292288 // 127 MB (the memory limit on device is 256MB, but for map we need space for input and output array)
+let PROBLEM_SIZE = 16777216 // 2^24
 let RESULT_SIZE = 1
 let THREADGROUP_SIZE = 256
 
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         // make grid
         let threadgroupSizeMultiplier = contains(kernelName, "4") ? 2 : 1
         var threadsPerGroup = MTLSize(width: THREADGROUP_SIZE, height: 1, depth: 1)
-        var numThreadgroups = MTLSize(width: (PROBLEM_SIZE / (THREADGROUP_SIZE * threadgroupSizeMultiplier)) + 1, height: 1, depth:1)
+        var numThreadgroups = MTLSize(width: (PROBLEM_SIZE / (THREADGROUP_SIZE * threadgroupSizeMultiplier)), height: 1, depth:1)
         
         println("Block: \(threadsPerGroup.width) x \(threadsPerGroup.height)\n" +
             "Grid: \(numThreadgroups.width) x \(numThreadgroups.height) x \(numThreadgroups.depth)")
