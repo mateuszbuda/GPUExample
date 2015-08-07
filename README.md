@@ -30,6 +30,8 @@ Accessing connected memory space.
 The same as in reduce3 but first reduction step is performed when copying data to shared memory, so we need half the number of threads that we needed in the previous reduce versions.
 
 ## NOTICE
-Graphics presenting reduction optimization steps source:
+* Graphics presenting reduction optimization steps source:
 Optimizing Parallel Reduction in CUDA by Mark Harris
 https://docs.nvidia.com/cuda/samples/6_Advanced/reduction/doc/reduction.pdf
+
+* This example only works for input array which size is a positive integer power of 2. As a simple exercise, you can try to make it more flexible.
