@@ -14,7 +14,7 @@ class KernelSelectionController: UITableViewController {
     
     // MARK: - Delegate
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         selectedKernel = indexPath.row > 0 ? "reduce\(indexPath.row)" : "map"
         
         return indexPath
@@ -22,8 +22,8 @@ class KernelSelectionController: UITableViewController {
 
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destController: ViewController = segue.destinationViewController as! ViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destController: ViewController = segue.destination as! ViewController
         destController.kernelName = selectedKernel
     }
 
