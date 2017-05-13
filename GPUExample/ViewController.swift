@@ -98,14 +98,10 @@ class ViewController: UIViewController {
         execTimeGPU.text = String.localizedStringWithFormat("%.2f ms", (stop-start) * 1000)
 
         // Get GPU data
-
-//        var data = Data(bytesNoCopy: resultBuffer.contents(), count: resultByteLength, deallocator: )
-
+        
         let data = Data(bytesNoCopy: resultBuffer.contents(), count: resultByteLength, deallocator: .none)
         // get data from GPU into Swift array
         data.getBytes(&result, length: resultByteLength)
-
-//        print("result = \(result[0])")
     }
 
     @IBAction func runCPU(_ sender: AnyObject) {
